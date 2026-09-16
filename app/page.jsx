@@ -19,19 +19,8 @@ function listImages(folder) {
   }
 }
 
-// public/images/apps/ に「アプリのid」で始まるファイル（例: sukuado.jpg）を置くと、
-// そのアプリカードのアイコンが自動でスクリーンショットに切り替わる。置かなければ文字アイコンのまま
-function findAppScreenshot(id) {
-  try {
-    const dir = path.join(process.cwd(), "public", "images", "apps");
-    const match = fs
-      .readdirSync(dir)
-      .filter((f) => IMAGE_EXT.test(f) && !f.startsWith("."))
-      .find((f) => f.toLowerCase().startsWith(id.toLowerCase()));
-    return match ? `/images/apps/${encodeURIComponent(match)}` : null;
-  } catch {
-    return null;
-  }
+function pad(n) {
+  return String(n).padStart(2, "0");
 }
 
 export default function Home() {
@@ -39,6 +28,11 @@ export default function Home() {
   const gallery = listImages("gallery");
   const { hero, apps, about, sns } = site;
   const instagram = sns.find((s) => s.label === "Instagram");
+
+  // ロゴ・フッターは site.config.js の name をそのまま使う（直書きしない）。
+  // "SCAD APPS LAB" → マーク"SCAD" + "APPS LAB"のように、最初の単語とそれ以降で分ける
+  const [logoMark, ...logoRest] = site.name.split(" ");
+  const logoText = logoRest.join(" ");
 
   return (
     <>
@@ -51,9 +45,9 @@ export default function Home() {
         <div className="header__inner">
           <a href="#top" className="logo" aria-label={`${site.name} トップへ`}>
             <span className="logo__mark" aria-hidden="true">
-              S
+              {logoMark}
             </span>
-            <span className="logo__text">{site.name}</span>
+            <span className="logo__text">{logoText}</span>
           </a>
           <nav className="nav" aria-label="メインメニュー">
             <a href="#apps">アプリ</a>
@@ -73,19 +67,8 @@ export default function Home() {
 
       <main id="top">
         {/* ───────── ヒーロー ───────── */}
-        <section className={`hero ${heroImage ? "" : "hero--empty"}`}>
-          {heroImage && (
-            <Image
-              src={heroImage}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="hero__photo"
-            />
-          )}
-          <div className="hero__shade" aria-hidden="true" />
-          <div className="hero__body">
+        <section className="hero">
+          <div className="wrap hero__inner">
             <h1 className="hero__title">
               {hero.lines.map((line) => (
                 <span key={line}>{line}</span>
@@ -93,20 +76,37 @@ export default function Home() {
             </h1>
             <div className="hero__foot">
               <p className="hero__lead">{hero.lead}</p>
-              <a href="#apps" className="btn btn--light">
+              <a href="#apps" className="btn">
                 {hero.cta}
               </a>
             </div>
           </div>
-          {heroImage && hero.caption && (
-            <p className="hero__caption">{hero.caption}</p>
-          )}
+
+          <div className={`hero__frame ${heroImage ? "" : "hero__frame--empty"}`}>
+            {heroImage ? (
+              <Image
+                src={heroImage}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 1120px"
+                className="hero__photo"
+              />
+            ) : (
+              <div className="hero__placeholder" aria-hidden="true" />
+            )}
+          </div>
+          <div className="wrap hero__caption">
+            <span>Motion Imaging</span>
+            {hero.caption && <span>{hero.caption}</span>}
+          </div>
         </section>
 
-        {/* ───────── アプリ ───────── */}
+        {/* ───────── アプリ（インデックス） ───────── */}
         <section id="apps" className="block apps">
           <div className="wrap">
             <div className="block__head">
+              <p className="block__no">Index</p>
               <h2 className="block__title">いま公開しているアプリ</h2>
               <p className="block__lead">
                 どれも無料で、登録なしですぐに試せます。
@@ -114,48 +114,34 @@ export default function Home() {
             </div>
 
             <ul className="apps__list">
-              {apps.map((app) => {
-                const screenshot = findAppScreenshot(app.id);
-                return (
-                  <li key={app.id} className={`app app--${app.theme}`}>
-                    <a
-                      className="app__link"
-                      href={app.url}
-                      target="_blank"
-                      rel="noopener"
-                      aria-label={`${app.name}を使ってみる（新しいタブで開きます）`}
-                    >
-                      <div className="app__mark" aria-hidden="true">
-                        {screenshot ? (
-                          <Image
-                            src={screenshot}
-                            alt=""
-                            fill
-                            sizes="96px"
-                            className="app__mark-photo"
-                          />
-                        ) : (
-                          <span>{app.mark}</span>
+              {apps.map((app, i) => (
+                <li key={app.id} className={`app app--${app.theme}`}>
+                  <a
+                    className="app__link"
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={`${app.name}を使ってみる（新しいタブで開きます）`}
+                  >
+                    <span className="app__no">{pad(i + 1)}</span>
+                    <span className="app__swatch" aria-hidden="true">
+                      {app.mark}
+                    </span>
+                    <span className="app__body">
+                      <span className="app__meta">
+                        <span className="app__name">{app.name}</span>
+                        <span className="app__cat">{app.category}</span>
+                        {app.badge && (
+                          <span className="app__badge">{app.badge}</span>
                         )}
-                      </div>
-                      <div className="app__body">
-                        <p className="app__meta">
-                          <span className="app__name">{app.name}</span>
-                          <span className="app__cat">{app.category}</span>
-                          {app.badge && (
-                            <span className="app__badge">{app.badge}</span>
-                          )}
-                        </p>
-                        <h3 className="app__summary">{app.summary}</h3>
-                        <p className="app__desc">{app.description}</p>
-                      </div>
-                      <span className="btn app__btn" aria-hidden="true">
-                        使ってみる
                       </span>
-                    </a>
-                  </li>
-                );
-              })}
+                      <span className="app__summary">{app.summary}</span>
+                      <span className="app__desc">{app.description}</span>
+                    </span>
+                    <span className="app__cta">使ってみる</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -163,7 +149,8 @@ export default function Home() {
         {/* ───────── About ───────── */}
         <section id="about" className="block about">
           <div className="wrap about__grid">
-            <div>
+            <div className="about__lead">
+              <p className="block__no">About</p>
               <h2 className="about__title">
                 {about.title.split("\n").map((l) => (
                   <span key={l}>{l}</span>
@@ -175,16 +162,18 @@ export default function Home() {
                 </p>
               ))}
             </div>
+
             <div className="flow">
               <p className="flow__label">アプリができるまで</p>
-              <ol className="flow__list">
+              <div className="flow__strip">
                 {about.flow.map((step, i) => (
-                  <li key={step} className="flow__step">
-                    <span className="flow__num">{i + 1}</span>
+                  <div key={step} className="flow__frame">
+                    <span className="flow__dots" aria-hidden="true" />
+                    <span className="flow__no">{pad(i + 1)}</span>
                     <span className="flow__name">{step}</span>
-                  </li>
+                  </div>
                 ))}
-              </ol>
+              </div>
               <p className="flow__note">
                 公開したら終わりではなく、使われ方を見て「改善」から「アイデア」へ戻ります。
               </p>
@@ -192,22 +181,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── 写真（写真があるときだけ表示） ───────── */}
+        {/* ───────── 写真（コンタクトシート） ───────── */}
         {gallery.length > 0 && (
           <section id="photo" className="block photo">
             <div className="wrap block__head">
+              <p className="block__no">Contact Sheet</p>
               <h2 className="block__title">{site.gallery.title}</h2>
               <p className="block__lead">{site.gallery.lead}</p>
             </div>
-            <div className="photo__strip" tabIndex={0} aria-label="写真ギャラリー（横にスクロールできます）">
+            <div
+              className="photo__strip"
+              tabIndex={0}
+              aria-label="写真ギャラリー（横にスクロールできます）"
+            >
               {gallery.map((src, i) => (
                 <figure key={src} className="photo__item">
-                  <Image
-                    src={src}
-                    alt={`作品写真 ${i + 1}`}
-                    fill
-                    sizes="(max-width: 700px) 80vw, 480px"
-                  />
+                  <span className="photo__frame">
+                    <Image
+                      src={src}
+                      alt={`作品写真 ${i + 1}`}
+                      fill
+                      sizes="(max-width: 700px) 78vw, 440px"
+                    />
+                  </span>
+                  <figcaption className="photo__no">{pad(i + 1)}</figcaption>
                 </figure>
               ))}
             </div>
