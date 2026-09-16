@@ -1,14 +1,14 @@
 // ============================================================
-// SCAD AI LAB サイト設定
+// SCAD APPS LAB サイト設定
 // 文言やリンクを変えたいときは、このファイルだけ直せばOK
 // ============================================================
 
 // アプリへのリンクに付ける計測用パラメータ（どこから来たか分かるようにする）
-const UTM = "utm_source=scad_ai_lab&utm_medium=referral&utm_campaign=top";
+const UTM = "utm_source=scad_apps_lab&utm_medium=referral&utm_campaign=top";
 
 export const site = {
-  name: "SCAD AI LAB",
-  url: "https://scad-ai-lab.vercel.app",
+  name: "SCAD APPS LAB",
+  url: "https://scad-apps-lab.vercel.app",
   description:
     "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のSCAD Beauty、ひとり飲みの店探しTokyo Solo Club。",
 
