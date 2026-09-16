@@ -350,7 +350,25 @@ ol {
   --app-fg: #e8691c;
   --app-accent: #c4530f;
 }
+/* カード全体を1つのリンクにする。display:contentsで見た目上の箱を消し、
+   中の要素（アイコン・本文・ボタン）はそのまま.appのグリッドの子として並ぶ */
+.app__link {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.app__link:hover .app__btn,
+.app__link:focus-visible .app__btn {
+  filter: brightness(1.15);
+}
+.app__link:hover .app__summary {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .app__mark {
+  position: relative;
+  overflow: hidden;
   width: 72px;
   height: 72px;
   border-radius: 18px;
@@ -362,6 +380,9 @@ ol {
   font-weight: 600;
   font-size: 30px;
   box-shadow: inset 0 0 0 1px rgba(19, 41, 75, 0.12);
+}
+.app__mark-photo {
+  object-fit: cover;
 }
 .app__meta {
   display: flex;

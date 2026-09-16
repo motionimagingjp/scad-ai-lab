@@ -19,6 +19,21 @@ function listImages(folder) {
   }
 }
 
+// public/images/apps/ に「アプリのid」で始まるファイル（例: sukuado.jpg）を置くと、
+// そのアプリカードのアイコンが自動でスクリーンショットに切り替わる。置かなければ文字アイコンのまま
+function findAppScreenshot(id) {
+  try {
+    const dir = path.join(process.cwd(), "public", "images", "apps");
+    const match = fs
+      .readdirSync(dir)
+      .filter((f) => IMAGE_EXT.test(f) && !f.startsWith("."))
+      .find((f) => f.toLowerCase().startsWith(id.toLowerCase()));
+    return match ? `/images/apps/${encodeURIComponent(match)}` : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
@@ -99,33 +114,48 @@ export default function Home() {
             </div>
 
             <ul className="apps__list">
-              {apps.map((app) => (
-                <li key={app.id} className={`app app--${app.theme}`}>
-                  <div className="app__mark" aria-hidden="true">
-                    <span>{app.mark}</span>
-                  </div>
-                  <div className="app__body">
-                    <p className="app__meta">
-                      <span className="app__name">{app.name}</span>
-                      <span className="app__cat">{app.category}</span>
-                      {app.badge && (
-                        <span className="app__badge">{app.badge}</span>
-                      )}
-                    </p>
-                    <h3 className="app__summary">{app.summary}</h3>
-                    <p className="app__desc">{app.description}</p>
-                  </div>
-                  <a
-                    className="btn app__btn"
-                    href={app.url}
-                    target="_blank"
-                    rel="noopener"
-                    aria-label={`${app.name}を使ってみる（新しいタブで開きます）`}
-                  >
-                    使ってみる
-                  </a>
-                </li>
-              ))}
+              {apps.map((app) => {
+                const screenshot = findAppScreenshot(app.id);
+                return (
+                  <li key={app.id} className={`app app--${app.theme}`}>
+                    <a
+                      className="app__link"
+                      href={app.url}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={`${app.name}を使ってみる（新しいタブで開きます）`}
+                    >
+                      <div className="app__mark" aria-hidden="true">
+                        {screenshot ? (
+                          <Image
+                            src={screenshot}
+                            alt=""
+                            fill
+                            sizes="96px"
+                            className="app__mark-photo"
+                          />
+                        ) : (
+                          <span>{app.mark}</span>
+                        )}
+                      </div>
+                      <div className="app__body">
+                        <p className="app__meta">
+                          <span className="app__name">{app.name}</span>
+                          <span className="app__cat">{app.category}</span>
+                          {app.badge && (
+                            <span className="app__badge">{app.badge}</span>
+                          )}
+                        </p>
+                        <h3 className="app__summary">{app.summary}</h3>
+                        <p className="app__desc">{app.description}</p>
+                      </div>
+                      <span className="btn app__btn" aria-hidden="true">
+                        使ってみる
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>
