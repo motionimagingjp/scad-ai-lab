@@ -127,6 +127,26 @@ ol {
   background: var(--mist);
 }
 
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--sub);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.icon-btn:hover {
+  background: var(--mist);
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
 .link {
   color: var(--blue);
   font-weight: 700;
@@ -649,6 +669,10 @@ ol {
   .header .btn--small {
     padding: 0 16px;
     font-size: 13px;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
   }
 }
 

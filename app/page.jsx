@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { site } from "./site.config";
+import ShareButton from "./ShareButton";
 
 // public/images 配下の写真を、ビルド時に自動で読み込む
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
@@ -65,6 +66,7 @@ export default function Home() {
               </a>
             )}
           </nav>
+          <ShareButton className="header__share" />
           <a href="#apps" className="btn btn--small">
             {hero.cta}
           </a>
