@@ -1,5 +1,5 @@
 // ============================================================
-// SCAD APPS LAB サイト設定
+// Motion Imaging Lab サイト設定
 // 文言やリンクを変えたいときは、このファイルだけ直せばOK
 // ============================================================
 
@@ -7,10 +7,10 @@
 const UTM = "utm_source=scad_apps_lab&utm_medium=referral&utm_campaign=top";
 
 export const site = {
-  name: "SCAD APPS LAB",
+  name: "Motion Imaging Lab",
   url: "https://scad-apps-lab.vercel.app",
   description:
-    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のSCAD Beauty、ひとり飲みの店探しTokyo Solo Club。",
+    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のイロナビ、今夜の店探しヨイナビ。",
 
   hero: {
     lines: ["AIで、", "思いついたサービスを", "形にする。"],
@@ -36,15 +36,15 @@ export const site = {
     },
     {
       id: "beauty",
-      name: "SCAD Beauty",
-      nameEn: "SCAD BEAUTY",
+      name: "イロナビ",
+      nameEn: "IRONAVI",
       category: "美容",
       summary: "写真1枚で、似合う色がわかる。",
       description:
         "顔写真からパーソナルカラーを診断し、服やメイクに使いやすい色を提案します。",
       badge: "",
       url: `https://scad-beauty.vercel.app/?${UTM}`,
-      mark: "B",
+      mark: "イ",
       theme: "beauty",
     },
     {

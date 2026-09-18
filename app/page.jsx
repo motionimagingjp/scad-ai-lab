@@ -52,7 +52,7 @@ export default function Home() {
         <div className="header__inner">
           <a href="#top" className="logo" aria-label={`${site.name} トップへ`}>
             <span className="logo__mark" aria-hidden="true">
-              S
+              M
             </span>
             <span className="logo__text">{site.name}</span>
           </a>
