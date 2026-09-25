@@ -10,7 +10,7 @@ export const site = {
   name: "Motion Imaging Lab",
   url: "https://scad-apps-lab.vercel.app",
   description:
-    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のイロナビ、今夜の店探しヨイナビ。",
+    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のイロナビ、今夜の店探しヨイナビ、街コン運営のSCADコネクト。",
 
   hero: {
     lines: ["AIで、", "思いついたサービスを", "形にする。"],
@@ -59,6 +59,19 @@ export const site = {
       url: `https://scad-solo.vercel.app/?${UTM}`,
       mark: "ヨ",
       theme: "solo",
+    },
+    {
+      id: "partyconnect",
+      name: "SCADコネクト",
+      nameEn: "SCAD CONNECT",
+      category: "街コン運営",
+      summary: "チェックインからマッチングまで、これ1つで回せる。",
+      description:
+        "街コン・イベントの受付・チェックインからマッチング成立の発表まで、主催者がその場で進行できる運営サポートシステムです。",
+      badge: "",
+      url: `https://scad-partyconnect.vercel.app/?${UTM}`,
+      mark: "コ",
+      theme: "partyconnect",
     },
   ],
 
