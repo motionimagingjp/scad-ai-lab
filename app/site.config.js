@@ -65,9 +65,9 @@ export const site = {
       name: "SCADコネクト",
       nameEn: "SCAD CONNECT",
       category: "街コン運営",
-      summary: "受付からマッチングまで、これ1つで回せる。",
+      summary: "チェックインからマッチングまで、これ1つで回せる。",
       description:
-        "街コン・イベントの受付からペア発表まで、主催者がその場で進行できる運営サポートシステムです。",
+        "街コン・イベントの受付・チェックインからマッチング成立の発表まで、主催者がその場で進行できる運営サポートシステムです。",
       badge: "",
       url: `https://scad-partyconnect.vercel.app/?${UTM}`,
       mark: "コ",
