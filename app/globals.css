@@ -370,6 +370,11 @@ ol {
   --app-fg: #e8691c;
   --app-accent: #c4530f;
 }
+.app--partyconnect {
+  --app-bg: #ffffff;
+  --app-fg: #16a34a;
+  --app-accent: #128a3e;
+}
 /* カード全体を1つのリンクにする。display:contentsで見た目上の箱を消し、
    中の要素（アイコン・本文・ボタン）はそのまま.appのグリッドの子として並ぶ */
 .app__link {
