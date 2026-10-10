@@ -73,6 +73,19 @@ export const site = {
       mark: "コ",
       theme: "partyconnect",
     },
+    {
+      id: "caption",
+      name: "SCAD Caption Pro",
+      nameEn: "SCAD CAPTION PRO",
+      category: "投稿文づくり",
+      summary: "写真1枚から、SNSの投稿文をまとめて作る。",
+      description:
+        "写真を1枚選ぶだけで、X・Instagram・YouTubeショート・TikTok向けの投稿文とハッシュタグを一括生成します。無料で1日3回まで試せます。",
+      badge: "",
+      url: `https://scad-caption-pro.vercel.app/?${UTM}`,
+      mark: "キ",
+      theme: "caption",
+    },
   ],
 
   about: {

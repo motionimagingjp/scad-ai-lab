@@ -375,6 +375,11 @@ ol {
   --app-fg: #16a34a;
   --app-accent: #128a3e;
 }
+.app--caption {
+  --app-bg: #ffffff;
+  --app-fg: #6d4bd8;
+  --app-accent: #5b3cc4;
+}
 /* カード全体を1つのリンクにする。display:contentsで見た目上の箱を消し、
    中の要素（アイコン・本文・ボタン）はそのまま.appのグリッドの子として並ぶ */
 .app__link {
