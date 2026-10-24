@@ -130,7 +130,7 @@ export const site = {
           {
             label: "YouTube",
             handle: "@JAKESOLANO_OFFICIAL",
-            use: "MV・楽曲の動画",
+            use: "動画を見る",
             url: "https://www.youtube.com/@JAKESOLANO_OFFICIAL",
           },
           {
@@ -169,14 +169,14 @@ export const site = {
           {
             label: "YouTube",
             handle: "@vert5x_official",
-            use: "MV・楽曲の動画",
+            use: "動画を見る",
             url: "https://www.youtube.com/@vert5x_official",
           },
           {
             // メンバーJONGJINのアカウントで運用
             label: "TikTok",
             handle: "@jongjin_vert5x",
-            use: "ショート動画（JONGJIN）",
+            use: "ショート動画",
             url: "https://www.tiktok.com/@jongjin_vert5x",
           },
           {
