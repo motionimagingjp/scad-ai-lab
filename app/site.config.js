@@ -88,6 +88,108 @@ export const site = {
     },
   ],
 
+  // 生成AIで作った動画（トップに最新の動画が自動で並ぶ）
+  aiVideo: {
+    title: "AIでつくる動画",
+    lead: "AIの出演者で作った、CMやプロモーション動画の制作例です。",
+    note: "※出演者・映像はAIで生成しています（演出です）",
+    channelId: "UCg0Fmgw6ghTfvWGi6pAo4ww",
+    url: "https://www.youtube.com/channel/UCg0Fmgw6ghTfvWGi6pAo4ww",
+  },
+
+  // 音楽活動（2つは別々の活動。表示は上から順に並ぶ。混ぜない）
+  // トップには短い紹介だけを出し、詳しくは /music のページで見せる
+  music: {
+    title: "音楽もつくっています",
+    lead: "アプリとは別に、2つの音楽活動をしています。",
+    pageTitle: "2つの音楽活動",
+    pageLead:
+      "MOTION IMAGINGがプロデュースする、JAKE SOLANOとVERT5X。動画はYouTubeとTikTokで公開しています。",
+    label: "MOTION IMAGING",
+    artists: [
+      {
+        id: "jakesolano",
+        name: "JAKE SOLANO",
+        kind: "シティポップ / R&B / バラード",
+        summary: "島と夜景の景色を歌う、日本語のシティポップ",
+        note: "歌は本人。制作にAIツールも活用",
+        // 活動の内容・設定（段落ごと）
+        story: [
+          "JAKE SOLANO（ジェイク・ソラノ）は、Jake自身が歌う音楽名義です。",
+          "テーマは、島の海辺と街の夜景。写真を撮ってきた目で見た景色を、日本語のシティポップ・R&B・バラードにしています。",
+        ],
+        theme: "jakesolano",
+        image: "/images/music/jakesolano.webp",
+        imageAlt: "JAKE SOLANOのイメージ写真（AI生成）",
+        imageNote: "AI生成イメージ",
+        // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
+        // 空のままなら、チャンネルへのリンクだけを出す
+        youtubeChannelId: "UCGPyNoPcnQzj5ZyC7Zo4-4g",
+        tiktokHandle: "jakesolano_official",
+        platforms: [
+          {
+            label: "YouTube",
+            handle: "@JAKESOLANO_OFFICIAL",
+            use: "動画を見る",
+            url: "https://www.youtube.com/@JAKESOLANO_OFFICIAL",
+          },
+          {
+            label: "TikTok",
+            handle: "@jakesolano_official",
+            use: "ショート動画",
+            url: "https://www.tiktok.com/@jakesolano_official",
+          },
+          {
+            label: "Spotify",
+            handle: "プレイリスト",
+            use: "楽曲を聴く",
+            url: "https://open.spotify.com/playlist/3JmskRtzTFZOV6SE9gYTMI",
+          },
+        ],
+      },
+      {
+        id: "vert5x",
+        name: "VERT5X",
+        reading: "バーテックス",
+        kind: "K-POP男性グループ（架空）",
+        summary: "AIから生まれた、赤と黒のK-POP男性グループ（架空）",
+        note: "AIで制作した楽曲。VERT5XはAIペルソナ（架空のグループ）",
+        story: [
+          "VERT5X（バーテックス）は、Jakeがプロデュースする、AIから生まれた架空のK-POP男性グループです。",
+          "ブランドカラーは赤と黒。楽曲もビジュアルもAIで制作しています。メンバーはAIペルソナで、実在の人物・グループではありません。",
+          "TikTokは、メンバーのJONGJINのアカウントで発信しています。",
+        ],
+        theme: "vert5x",
+        image: "/images/music/vert5x.webp",
+        imageAlt: "VERT5Xのイメージ写真（AI生成・架空のグループ）",
+        imageNote: "AI生成・架空のグループ",
+        youtubeChannelId: "UCQWChBX1fjygrXTnvS8OPYw",
+        tiktokHandle: "jongjin_vert5x",
+        platforms: [
+          {
+            label: "YouTube",
+            handle: "@vert5x_official",
+            use: "動画を見る",
+            url: "https://www.youtube.com/@vert5x_official",
+          },
+          {
+            // メンバーJONGJINのアカウントで運用
+            label: "TikTok",
+            handle: "@jongjin_vert5x",
+            use: "ショート動画",
+            url: "https://www.tiktok.com/@jongjin_vert5x",
+          },
+          {
+            label: "Spotify",
+            handle: "プレイリスト",
+            use: "楽曲を聴く",
+            url: "https://open.spotify.com/playlist/293EagrTDDmgcXolSHMRsD",
+          },
+        ],
+      },
+    ],
+  },
+
   about: {
     title: "写真を撮ってきた人間が、\nAIを相棒にアプリを作っています。",
     body: [

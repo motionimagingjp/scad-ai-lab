@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { site } from "./site.config";
-import ShareButton from "./ShareButton";
+import Link from "next/link";
+import SiteHeader from "./SiteHeader";
+import SiteFooter from "./SiteFooter";
+import { youtubeUploadsUrl } from "./youtube";
 
 // public/images 配下の写真を、ビルド時に自動で読み込む
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
@@ -38,7 +41,8 @@ function findAppScreenshot(id) {
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
-  const { hero, apps, about, sns } = site;
+  const { hero, apps, aiVideo, music, about, sns } = site;
+  const aiVideoUrl = youtubeUploadsUrl(aiVideo.channelId);
   const instagram = sns.find((s) => s.label === "Instagram");
 
   return (
@@ -47,31 +51,7 @@ export default function Home() {
         アプリ一覧へ移動
       </a>
 
-      {/* ───────── ヘッダー ───────── */}
-      <header className="header">
-        <div className="header__inner">
-          <a href="#top" className="logo" aria-label={`${site.name} トップへ`}>
-            <span className="logo__mark" aria-hidden="true">
-              M
-            </span>
-            <span className="logo__text">{site.name}</span>
-          </a>
-          <nav className="nav" aria-label="メインメニュー">
-            <a href="#apps">アプリ</a>
-            <a href="#about">About</a>
-            {gallery.length > 0 && <a href="#photo">写真</a>}
-            {instagram && (
-              <a href={instagram.url} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            )}
-          </nav>
-          <ShareButton className="header__share" />
-          <a href="#apps" className="btn btn--small">
-            {hero.cta}
-          </a>
-        </div>
-      </header>
+      <SiteHeader showPhoto={gallery.length > 0} />
 
       <main id="top">
         {/* ───────── ヒーロー ───────── */}
@@ -162,6 +142,74 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ───────── AI動画（最新の動画が自動で並ぶ） ───────── */}
+        <section id="video" className="block aivideo">
+          <div className="wrap">
+            <div className="block__head">
+              <h2 className="block__title">{aiVideo.title}</h2>
+              <p className="block__lead">{aiVideo.lead}</p>
+            </div>
+            {aiVideoUrl && (
+              <div className="aivideo__frame">
+                <iframe
+                  src={aiVideoUrl}
+                  title="AIでつくった動画（最新順）"
+                  loading="lazy"
+                  allow="encrypted-media; picture-in-picture; fullscreen"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            )}
+            <p className="aivideo__note">{aiVideo.note}</p>
+            <p className="aivideo__more">
+              <a
+                className="link"
+                href={aiVideo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTubeでほかの動画を見る
+              </a>
+            </p>
+          </div>
+        </section>
+
+        {/* ───────── 音楽（トップは短い紹介だけ。詳しくは /music） ───────── */}
+        <section id="music" className="block music-teaser">
+          <div className="wrap">
+            <div className="block__head">
+              <h2 className="block__title">{music.title}</h2>
+              <p className="block__lead">{music.lead}</p>
+            </div>
+            <ul className="teaser__list">
+              {music.artists.map((a) => (
+                <li key={a.id}>
+                  <Link
+                    href={`/music#${a.id}`}
+                    className={`teaser teaser--${a.theme}`}
+                  >
+                    <span className="teaser__photo">
+                      <Image src={a.image} alt="" fill sizes="96px" />
+                    </span>
+                    <span className="teaser__body">
+                      <span className="teaser__name">{a.name}</span>
+                      <span className="teaser__kind">{a.kind}</span>
+                    </span>
+                    <span className="teaser__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="teaser__more">
+              <Link className="link" href="/music">
+                音楽のページで、動画と活動を見る
+              </Link>
+            </p>
+          </div>
+        </section>
+
         {/* ───────── About ───────── */}
         <section id="about" className="block about">
           <div className="wrap about__grid">
@@ -229,28 +277,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* ───────── フッター ───────── */}
-      <footer className="footer">
-        <div className="wrap footer__inner">
-          <div>
-            <p className="footer__logo">{site.name}</p>
-            <p className="footer__tag">AIで、思いついたサービスを形にする。</p>
-          </div>
-          <ul className="footer__sns">
-            {sns.map((s) => (
-              <li key={s.url}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                  <span>{s.handle}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <p className="wrap footer__copy">
-          © {new Date().getFullYear()} {site.name}
-        </p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
