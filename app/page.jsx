@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { site } from "./site.config";
-import ShareButton from "./ShareButton";
+import Link from "next/link";
+import SiteHeader from "./SiteHeader";
+import SiteFooter from "./SiteFooter";
 
 // public/images 配下の写真を、ビルド時に自動で読み込む
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
@@ -47,32 +49,7 @@ export default function Home() {
         アプリ一覧へ移動
       </a>
 
-      {/* ───────── ヘッダー ───────── */}
-      <header className="header">
-        <div className="header__inner">
-          <a href="#top" className="logo" aria-label={`${site.name} トップへ`}>
-            <span className="logo__mark" aria-hidden="true">
-              M
-            </span>
-            <span className="logo__text">{site.name}</span>
-          </a>
-          <nav className="nav" aria-label="メインメニュー">
-            <a href="#apps">アプリ</a>
-            <a href="#music">音楽</a>
-            <a href="#about">About</a>
-            {gallery.length > 0 && <a href="#photo">写真</a>}
-            {instagram && (
-              <a href={instagram.url} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            )}
-          </nav>
-          <ShareButton className="header__share" />
-          <a href="#apps" className="btn btn--small">
-            {hero.cta}
-          </a>
-        </div>
-      </header>
+      <SiteHeader showPhoto={gallery.length > 0} />
 
       <main id="top">
         {/* ───────── ヒーロー ───────── */}
@@ -163,59 +140,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── 音楽 ───────── */}
-        <section id="music" className="block music">
+        {/* ───────── 音楽（トップは短い紹介だけ。詳しくは /music） ───────── */}
+        <section id="music" className="block music-teaser">
           <div className="wrap">
             <div className="block__head">
               <h2 className="block__title">{music.title}</h2>
               <p className="block__lead">{music.lead}</p>
             </div>
-            <ul className="music__list">
+            <ul className="teaser__list">
               {music.artists.map((a) => (
-                <li key={a.id} className={`artist artist--${a.theme}`}>
-                  <div className="artist__text">
-                    <div className="artist__head">
-                      <h3 className="artist__name">{a.name}</h3>
-                      {a.reading && (
-                        <span className="artist__reading">（{a.reading}）</span>
-                      )}
-                    </div>
-                    <p className="artist__kind">{a.kind}</p>
-                    <p className="artist__summary">{a.summary}</p>
-                    <p className="artist__note">{a.note}</p>
-                    <ul className="artist__links">
-                      {a.links.map((l) => (
-                        <li key={l.url}>
-                          <a
-                            className="artist__link"
-                            href={l.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {l.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {a.image && (
-                    <figure className="artist__photo">
-                      <Image
-                        src={a.image}
-                        alt={a.imageAlt}
-                        fill
-                        sizes="(max-width: 759px) 100vw, 520px"
-                        className="artist__img"
-                      />
-                      <figcaption className="artist__photo-note">
-                        {a.imageNote}
-                      </figcaption>
-                    </figure>
-                  )}
+                <li key={a.id}>
+                  <Link
+                    href={`/music#${a.id}`}
+                    className={`teaser teaser--${a.theme}`}
+                  >
+                    <span className="teaser__photo">
+                      <Image src={a.image} alt="" fill sizes="96px" />
+                    </span>
+                    <span className="teaser__body">
+                      <span className="teaser__name">{a.name}</span>
+                      <span className="teaser__kind">{a.kind}</span>
+                    </span>
+                    <span className="teaser__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <p className="music__label">Label: {music.label}</p>
+            <p className="teaser__more">
+              <Link className="link" href="/music">
+                音楽のページで、動画と活動を見る
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -286,28 +243,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* ───────── フッター ───────── */}
-      <footer className="footer">
-        <div className="wrap footer__inner">
-          <div>
-            <p className="footer__logo">{site.name}</p>
-            <p className="footer__tag">AIで、思いついたサービスを形にする。</p>
-          </div>
-          <ul className="footer__sns">
-            {sns.map((s) => (
-              <li key={s.url}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                  <span>{s.handle}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <p className="wrap footer__copy">
-          © {new Date().getFullYear()} {site.name}
-        </p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
