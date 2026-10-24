@@ -848,11 +848,13 @@ ol {
   gap: 12px;
   margin-top: 24px;
 }
+/* 配信先のカード。3つとも同じ形・同じ高さ（上から 媒体名／内容／アカウント） */
 .platform {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 2px 16px;
-  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  padding: 18px 20px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--white);
@@ -864,19 +866,23 @@ ol {
   background: rgba(255, 255, 255, 0.05);
 }
 .platform__label {
-  grid-row: span 2;
-  align-self: center;
   font-family: var(--font-en-stack);
+  font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--m-accent);
 }
 .platform__use {
   font-weight: 700;
+  line-height: 1.5;
 }
 .platform__handle {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 13px;
   opacity: 0.7;
-  overflow-wrap: anywhere;
 }
 .mfoot {
   padding-block: 48px;
