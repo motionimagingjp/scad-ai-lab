@@ -115,7 +115,7 @@ export const site = {
         imageNote: "AI生成イメージ",
         // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
         // 空のままなら、チャンネルへのリンクだけを出す
-        youtubeChannelId: "",
+        youtubeChannelId: "UCGPyNoPcnQzj5ZyC7Zo4-4g",
         tiktokHandle: "jakesolano_official",
         platforms: [
           {
@@ -154,7 +154,7 @@ export const site = {
         image: "/images/music/vert5x.webp",
         imageAlt: "VERT5Xのイメージ写真（AI生成・架空のグループ）",
         imageNote: "AI生成・架空のグループ",
-        youtubeChannelId: "",
+        youtubeChannelId: "UCQWChBX1fjygrXTnvS8OPYw",
         tiktokHandle: "jongjin_vert5x",
         platforms: [
           {
