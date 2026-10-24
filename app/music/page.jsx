@@ -6,6 +6,7 @@ import { site } from "../site.config";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import TikTokEmbed from "../TikTokEmbed";
+import { youtubeUploadsUrl } from "../youtube";
 
 const { music } = site;
 
@@ -28,12 +29,6 @@ function hasGallery() {
   } catch {
     return false;
   }
-}
-
-// チャンネルIDの "UC" を "UU" に替えると、そのチャンネルのアップロード一覧（最新順）になる
-function youtubeUploadsUrl(channelId) {
-  if (!/^UC[\w-]{22}$/.test(channelId || "")) return null;
-  return `https://www.youtube-nocookie.com/embed/videoseries?list=UU${channelId.slice(2)}`;
 }
 
 export default function MusicPage() {

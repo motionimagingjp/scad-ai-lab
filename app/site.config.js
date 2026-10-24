@@ -88,6 +88,15 @@ export const site = {
     },
   ],
 
+  // 生成AIで作った動画（トップに最新の動画が自動で並ぶ）
+  aiVideo: {
+    title: "AIでつくる動画",
+    lead: "AIの出演者で作った、CMやプロモーション動画の制作例です。",
+    note: "※出演者・映像はAIで生成しています（演出です）",
+    channelId: "UCg0Fmgw6ghTfvWGi6pAo4ww",
+    url: "https://www.youtube.com/channel/UCg0Fmgw6ghTfvWGi6pAo4ww",
+  },
+
   // 音楽活動（2つは別々の活動。表示は上から順に並ぶ。混ぜない）
   // トップには短い紹介だけを出し、詳しくは /music のページで見せる
   music: {

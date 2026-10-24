@@ -17,6 +17,7 @@ export default function SiteHeader({ showPhoto = true }) {
         </Link>
         <nav className="nav" aria-label="メインメニュー">
           <Link href="/#apps">アプリ</Link>
+          <Link href="/#video">AI動画</Link>
           <Link href="/music">音楽</Link>
           <Link href="/#about">About</Link>
           {showPhoto && <Link href="/#photo">写真</Link>}

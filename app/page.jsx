@@ -5,6 +5,7 @@ import { site } from "./site.config";
 import Link from "next/link";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+import { youtubeUploadsUrl } from "./youtube";
 
 // public/images 配下の写真を、ビルド時に自動で読み込む
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
@@ -40,7 +41,8 @@ function findAppScreenshot(id) {
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
-  const { hero, apps, music, about, sns } = site;
+  const { hero, apps, aiVideo, music, about, sns } = site;
+  const aiVideoUrl = youtubeUploadsUrl(aiVideo.channelId);
   const instagram = sns.find((s) => s.label === "Instagram");
 
   return (
@@ -137,6 +139,38 @@ export default function Home() {
                 );
               })}
             </ul>
+          </div>
+        </section>
+
+        {/* ───────── AI動画（最新の動画が自動で並ぶ） ───────── */}
+        <section id="video" className="block aivideo">
+          <div className="wrap">
+            <div className="block__head">
+              <h2 className="block__title">{aiVideo.title}</h2>
+              <p className="block__lead">{aiVideo.lead}</p>
+            </div>
+            {aiVideoUrl && (
+              <div className="aivideo__frame">
+                <iframe
+                  src={aiVideoUrl}
+                  title="AIでつくった動画（最新順）"
+                  loading="lazy"
+                  allow="encrypted-media; picture-in-picture; fullscreen"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            )}
+            <p className="aivideo__note">{aiVideo.note}</p>
+            <p className="aivideo__more">
+              <a
+                className="link"
+                href={aiVideo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTubeでほかの動画を見る
+              </a>
+            </p>
           </div>
         </section>
 
