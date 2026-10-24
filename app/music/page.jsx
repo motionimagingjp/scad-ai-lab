@@ -57,6 +57,7 @@ export default function MusicPage() {
 
         {music.artists.map((a) => {
           const youtube = a.platforms.find((p) => p.label === "YouTube");
+          const tiktok = a.platforms.find((p) => p.label === "TikTok");
           const uploads = youtubeUploadsUrl(a.youtubeChannelId);
           return (
             <section
@@ -99,7 +100,17 @@ export default function MusicPage() {
                 <h3 className="mband__sub">動画</h3>
                 <div className="mband__videos">
                   <div className="video">
-                    <p className="video__label">YouTube</p>
+                    <div className="video__head">
+                      <p className="video__label">YouTube</p>
+                      <a
+                        className="video__open"
+                        href={youtube.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        YouTubeで開く
+                      </a>
+                    </div>
                     {uploads ? (
                       <div className="video__frame">
                         <iframe
@@ -126,7 +137,17 @@ export default function MusicPage() {
                     )}
                   </div>
                   <div className="video video--tiktok">
-                    <p className="video__label">TikTok</p>
+                    <div className="video__head">
+                      <p className="video__label">TikTok</p>
+                      <a
+                        className="video__open"
+                        href={tiktok.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        TikTokで開く
+                      </a>
+                    </div>
                     <TikTokEmbed handle={a.tiktokHandle} />
                   </div>
                 </div>
