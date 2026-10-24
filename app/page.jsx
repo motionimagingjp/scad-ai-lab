@@ -38,7 +38,7 @@ function findAppScreenshot(id) {
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
-  const { hero, apps, about, sns } = site;
+  const { hero, apps, music, about, sns } = site;
   const instagram = sns.find((s) => s.label === "Instagram");
 
   return (
@@ -58,6 +58,7 @@ export default function Home() {
           </a>
           <nav className="nav" aria-label="メインメニュー">
             <a href="#apps">アプリ</a>
+            <a href="#music">音楽</a>
             <a href="#about">About</a>
             {gallery.length > 0 && <a href="#photo">写真</a>}
             {instagram && (
@@ -159,6 +160,46 @@ export default function Home() {
                 );
               })}
             </ul>
+          </div>
+        </section>
+
+        {/* ───────── 音楽 ───────── */}
+        <section id="music" className="block music">
+          <div className="wrap">
+            <div className="block__head">
+              <h2 className="block__title">{music.title}</h2>
+              <p className="block__lead">{music.lead}</p>
+            </div>
+            <ul className="music__list">
+              {music.artists.map((a) => (
+                <li key={a.id} className={`artist artist--${a.theme}`}>
+                  <div className="artist__head">
+                    <h3 className="artist__name">{a.name}</h3>
+                    {a.reading && (
+                      <span className="artist__reading">（{a.reading}）</span>
+                    )}
+                  </div>
+                  <p className="artist__kind">{a.kind}</p>
+                  <p className="artist__summary">{a.summary}</p>
+                  <p className="artist__note">{a.note}</p>
+                  <ul className="artist__links">
+                    {a.links.map((l) => (
+                      <li key={l.url}>
+                        <a
+                          className="artist__link"
+                          href={l.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {l.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+            <p className="music__label">Label: {music.label}</p>
           </div>
         </section>
 

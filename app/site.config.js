@@ -88,6 +88,61 @@ export const site = {
     },
   ],
 
+  // 音楽活動（2つは別々の活動。表示は上から順に並ぶ。混ぜない）
+  music: {
+    title: "音楽もつくっています",
+    lead: "アプリとは別に、音楽の活動もしています。",
+    label: "MOTION IMAGING",
+    artists: [
+      {
+        id: "jakesolano",
+        name: "JAKE SOLANO",
+        kind: "シティポップ / R&B / バラード",
+        summary: "島と夜景の景色を歌う、日本語のシティポップ",
+        note: "歌は本人。制作にAIツールも活用",
+        theme: "jakesolano",
+        links: [
+          {
+            label: "YouTube",
+            url: "https://www.youtube.com/@JAKESOLANO_OFFICIAL",
+          },
+          {
+            label: "TikTok",
+            url: "https://www.tiktok.com/@jakesolano_official",
+          },
+          {
+            label: "Spotifyで聴く",
+            url: "https://open.spotify.com/playlist/3JmskRtzTFZOV6SE9gYTMI",
+          },
+        ],
+      },
+      {
+        id: "vert5x",
+        name: "VERT5X",
+        reading: "バーテックス",
+        kind: "K-POP男性グループ（架空）",
+        summary: "AIから生まれた、赤と黒のK-POP男性グループ（架空）",
+        note: "AIで制作した楽曲。VERT5XはAIペルソナ（架空のグループ）",
+        theme: "vert5x",
+        links: [
+          {
+            label: "YouTube",
+            url: "https://www.youtube.com/@vert5x_official",
+          },
+          {
+            // メンバーJONGJINのアカウントで運用
+            label: "TikTok",
+            url: "https://www.tiktok.com/@jongjin_vert5x",
+          },
+          {
+            label: "Spotifyで聴く",
+            url: "https://open.spotify.com/playlist/293EagrTDDmgcXolSHMRsD",
+          },
+        ],
+      },
+    ],
+  },
+
   about: {
     title: "写真を撮ってきた人間が、\nAIを相棒にアプリを作っています。",
     body: [
