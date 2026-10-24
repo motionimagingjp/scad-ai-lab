@@ -5,7 +5,6 @@ import Link from "next/link";
 import { site } from "../site.config";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
-import TikTokEmbed from "../TikTokEmbed";
 import { youtubeUploadsUrl } from "../youtube";
 
 const { music } = site;
@@ -136,21 +135,22 @@ export default function MusicPage() {
                       </a>
                     )}
                   </div>
-                  <div className="video video--tiktok">
-                    <div className="video__head">
-                      <p className="video__label">TikTok</p>
-                      <a
-                        className="video__open"
-                        href={tiktok.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        TikTokで開く
-                      </a>
-                    </div>
-                    <TikTokEmbed handle={a.tiktokHandle} />
-                  </div>
                 </div>
+                <a
+                  className="tiktok-btn"
+                  href={tiktok.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="tiktok-btn__label">TikTok</span>
+                  <span className="tiktok-btn__text">
+                    ショート動画を見る
+                    <small>{tiktok.handle}</small>
+                  </span>
+                  <span className="tiktok-btn__arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
 
                 {/* 配信・SNS */}
                 <h3 className="mband__sub">配信・SNS</h3>
