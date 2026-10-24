@@ -101,6 +101,9 @@ export const site = {
         summary: "島と夜景の景色を歌う、日本語のシティポップ",
         note: "歌は本人。制作にAIツールも活用",
         theme: "jakesolano",
+        image: "/images/music/jakesolano.webp",
+        imageAlt: "JAKE SOLANOのイメージ写真（AI生成）",
+        imageNote: "AI生成イメージ",
         links: [
           {
             label: "YouTube",
@@ -124,6 +127,9 @@ export const site = {
         summary: "AIから生まれた、赤と黒のK-POP男性グループ（架空）",
         note: "AIで制作した楽曲。VERT5XはAIペルソナ（架空のグループ）",
         theme: "vert5x",
+        image: "/images/music/vert5x.webp",
+        imageAlt: "VERT5Xのイメージ写真（AI生成・架空のグループ）",
+        imageNote: "AI生成・架空のグループ",
         links: [
           {
             label: "YouTube",

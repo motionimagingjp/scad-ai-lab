@@ -173,29 +173,45 @@ export default function Home() {
             <ul className="music__list">
               {music.artists.map((a) => (
                 <li key={a.id} className={`artist artist--${a.theme}`}>
-                  <div className="artist__head">
-                    <h3 className="artist__name">{a.name}</h3>
-                    {a.reading && (
-                      <span className="artist__reading">（{a.reading}）</span>
-                    )}
+                  <div className="artist__text">
+                    <div className="artist__head">
+                      <h3 className="artist__name">{a.name}</h3>
+                      {a.reading && (
+                        <span className="artist__reading">（{a.reading}）</span>
+                      )}
+                    </div>
+                    <p className="artist__kind">{a.kind}</p>
+                    <p className="artist__summary">{a.summary}</p>
+                    <p className="artist__note">{a.note}</p>
+                    <ul className="artist__links">
+                      {a.links.map((l) => (
+                        <li key={l.url}>
+                          <a
+                            className="artist__link"
+                            href={l.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {l.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="artist__kind">{a.kind}</p>
-                  <p className="artist__summary">{a.summary}</p>
-                  <p className="artist__note">{a.note}</p>
-                  <ul className="artist__links">
-                    {a.links.map((l) => (
-                      <li key={l.url}>
-                        <a
-                          className="artist__link"
-                          href={l.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {l.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  {a.image && (
+                    <figure className="artist__photo">
+                      <Image
+                        src={a.image}
+                        alt={a.imageAlt}
+                        fill
+                        sizes="(max-width: 759px) 100vw, 520px"
+                        className="artist__img"
+                      />
+                      <figcaption className="artist__photo-note">
+                        {a.imageNote}
+                      </figcaption>
+                    </figure>
+                  )}
                 </li>
               ))}
             </ul>
