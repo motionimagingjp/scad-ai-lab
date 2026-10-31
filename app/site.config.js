@@ -162,9 +162,9 @@ export const site = {
         note: "AIで制作したアーティスト（AIペルソナ）",
         theme: "suminarina",
         // 画像（/images/music/ に置いて、ここにパスを書く）。無ければ文字のカードになる
-        image: "",
-        imageAlt: "",
-        imageNote: "",
+        image: "/images/music/suminarina.webp",
+        imageAlt: "澄名凛奈のイメージ写真（AI生成）",
+        imageNote: "AI生成イメージ",
         // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
         // 空のままなら、チャンネルへのリンクだけを出す
         youtubeChannelId: "",

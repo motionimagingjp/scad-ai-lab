@@ -613,7 +613,26 @@ ol {
     grid-template-columns: repeat(3, 1fr);
   }
   .teaser {
+    grid-template-columns: 56px minmax(0, 1fr) auto;
     gap: 14px;
+    padding: 14px 20px 14px 14px;
+  }
+  .teaser__photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
+  .teaser__name {
+    font-size: 19px;
+    white-space: nowrap;
+  }
+  .teaser__kind {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .teaser__body {
+    min-width: 0;
   }
 }
 
@@ -959,7 +978,7 @@ ol {
     grid-template-columns: 1fr;
   }
   .platforms {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 
