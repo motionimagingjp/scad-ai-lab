@@ -189,7 +189,13 @@ export default function Home() {
                     className={`teaser teaser--${a.theme}`}
                   >
                     <span className="teaser__photo">
-                      <Image src={a.image} alt="" fill sizes="96px" />
+                      {a.image ? (
+                        <Image src={a.image} alt="" fill sizes="96px" />
+                      ) : (
+                        <span className="teaser__initial" aria-hidden="true">
+                          {a.name.slice(0, 1)}
+                        </span>
+                      )}
                     </span>
                     <span className="teaser__body">
                       <span className="teaser__name">{a.name}</span>

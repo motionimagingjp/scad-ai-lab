@@ -104,10 +104,10 @@ export const site = {
   // トップには短い紹介だけを出し、詳しくは /music のページで見せる
   music: {
     title: "音楽もつくっています",
-    lead: "アプリとは別に、2つの音楽活動をしています。",
-    pageTitle: "2つの音楽活動",
+    lead: "アプリとは別に、3つの音楽活動があります。",
+    pageTitle: "3つの音楽活動",
     pageLead:
-      "MOTION IMAGINGがプロデュースする、JAKE SOLANOとVERT5X。動画はYouTubeとTikTokで公開しています。",
+      "MOTION IMAGINGの音楽活動。JAKE SOLANO、澄名凛奈、VERT5Xの3つを紹介します。動画はYouTubeなどで公開しています。",
     label: "MOTION IMAGING",
     artists: [
       {
@@ -147,6 +147,39 @@ export const site = {
             handle: "プレイリスト",
             use: "楽曲を聴く",
             url: "https://open.spotify.com/playlist/3JmskRtzTFZOV6SE9gYTMI",
+          },
+        ],
+      },
+      {
+        id: "suminarina",
+        name: "澄名凛奈",
+        reading: "すみな りんな",
+        kind: "アーティスト",
+        summary: "YouTubeとInstagramで活動しています。",
+        // 活動の内容・設定（段落ごと）。決まったらここに足す
+        story: [],
+        // AI表記などの注記。決まったらここに足す
+        note: "",
+        theme: "suminarina",
+        // 画像（/images/music/ に置いて、ここにパスを書く）。無ければ文字のカードになる
+        image: "",
+        imageAlt: "",
+        imageNote: "",
+        // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
+        // 空のままなら、チャンネルへのリンクだけを出す
+        youtubeChannelId: "",
+        platforms: [
+          {
+            label: "YouTube",
+            handle: "@sumina_rina_official",
+            use: "動画を見る",
+            url: "https://www.youtube.com/@sumina_rina_official",
+          },
+          {
+            label: "Instagram",
+            handle: "@sumina_rina_official",
+            use: "投稿を見る",
+            url: "https://www.instagram.com/sumina_rina_official/",
           },
         ],
       },
