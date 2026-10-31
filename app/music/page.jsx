@@ -5,6 +5,7 @@ import Link from "next/link";
 import { site } from "../site.config";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import ShareButton from "../ShareButton";
 import { youtubeUploadsUrl } from "../youtube";
 
 const { music } = site;
@@ -33,7 +34,11 @@ function hasGallery() {
 export default function MusicPage() {
   return (
     <>
-      <SiteHeader showPhoto={hasGallery()} />
+      <SiteHeader
+        showPhoto={hasGallery()}
+        shareTitle={`音楽 | ${site.name}`}
+        shareText={music.pageLead}
+      />
 
       <main>
         {/* ───────── ページ見出し ───────── */}
@@ -42,6 +47,14 @@ export default function MusicPage() {
             <p className="mhero__label">MUSIC</p>
             <h1 className="mhero__title">{music.pageTitle}</h1>
             <p className="mhero__lead">{music.pageLead}</p>
+            <div className="mhero__share">
+              <ShareButton
+                label="このページをシェア"
+                className="share-btn--hero"
+                title={`音楽 | ${site.name}`}
+                text={music.pageLead}
+              />
+            </div>
             <ul className="mhero__jump">
               {music.artists.map((a) => (
                 <li key={a.id}>

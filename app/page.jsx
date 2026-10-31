@@ -5,6 +5,7 @@ import { site } from "./site.config";
 import Link from "next/link";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+import ShareButton from "./ShareButton";
 import { youtubeUploadsUrl } from "./youtube";
 
 // public/images 配下の写真を、ビルド時に自動で読み込む
@@ -75,9 +76,12 @@ export default function Home() {
             </h1>
             <div className="hero__foot">
               <p className="hero__lead">{hero.lead}</p>
-              <a href="#apps" className="btn btn--light">
-                {hero.cta}
-              </a>
+              <div className="hero__actions">
+                <a href="#apps" className="btn btn--light">
+                  {hero.cta}
+                </a>
+                <ShareButton label="このサイトをシェア" className="share-btn--hero" />
+              </div>
             </div>
           </div>
           {heroImage && hero.caption && (

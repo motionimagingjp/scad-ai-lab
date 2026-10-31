@@ -10,7 +10,10 @@ export const site = {
   name: "Motion Imaging Lab",
   url: "https://scad-apps-lab.vercel.app",
   description:
-    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のイロナビ、今夜の店探しヨイナビ、街コン運営のSCADコネクト。",
+    "写真を撮ってきた人間が、AIと一緒に、Webアプリ・動画・音楽をつくっています。企画から公開、改善までひとりで手がけるMOTION IMAGINGの実験場です。",
+  // シェアするときの文面（サイト全体向け。ページごとに変えたいときは ShareButton に text を渡す）
+  shareText:
+    "写真を撮ってきた人間が、AIと一緒に、Webアプリ・動画・音楽をつくっています。",
 
   hero: {
     lines: ["AIで、", "思いついたサービスを", "形にする。"],
