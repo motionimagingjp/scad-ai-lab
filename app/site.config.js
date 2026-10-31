@@ -187,6 +187,12 @@ export const site = {
             use: "楽曲を聴く",
             url: "https://open.spotify.com/artist/5sRxBIsSelg4RWFy83hsMW",
           },
+          {
+            label: "Apple Music",
+            handle: "アーティスト",
+            use: "楽曲を聴く",
+            url: "https://music.apple.com/jp/artist/%E6%BE%84%E5%90%8D-%E5%87%9C%E5%A5%88/6828043271",
+          },
         ],
       },
       {
