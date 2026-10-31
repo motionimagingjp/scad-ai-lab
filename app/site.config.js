@@ -154,12 +154,12 @@ export const site = {
         id: "suminarina",
         name: "澄名凛奈",
         reading: "すみな りんな",
-        kind: "アーティスト",
-        summary: "YouTubeとInstagramで活動しています。",
-        // 活動の内容・設定（段落ごと）。決まったらここに足す
-        story: [],
-        // AI表記などの注記。決まったらここに足す
-        note: "",
+        kind: "AIアーティスト",
+        summary: "YouTubeとInstagramで活動する、AIアーティスト",
+        // 活動の内容・設定（段落ごと）。ジャンルなどが決まったらここに足す
+        story: ["澄名凛奈（すみな りんな）は、AIで制作したアーティストです。"],
+        // AI表記
+        note: "AIで制作したアーティスト（AIペルソナ）",
         theme: "suminarina",
         // 画像（/images/music/ に置いて、ここにパスを書く）。無ければ文字のカードになる
         image: "",
@@ -180,6 +180,12 @@ export const site = {
             handle: "@sumina_rina_official",
             use: "投稿を見る",
             url: "https://www.instagram.com/sumina_rina_official/",
+          },
+          {
+            label: "Spotify",
+            handle: "アーティスト",
+            use: "楽曲を聴く",
+            url: "https://open.spotify.com/artist/5sRxBIsSelg4RWFy83hsMW",
           },
         ],
       },
