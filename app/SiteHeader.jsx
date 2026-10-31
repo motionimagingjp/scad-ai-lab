@@ -3,8 +3,7 @@ import { site } from "./site.config";
 import ShareButton from "./ShareButton";
 
 // トップと音楽ページで共通のヘッダー。リンクはどのページからでも届くよう "/#apps" の形にする
-// shareTitle / shareText：右上のシェアボタンで送る、そのページ向けの文面
-export default function SiteHeader({ showPhoto = true, shareTitle, shareText }) {
+export default function SiteHeader({ showPhoto = true }) {
   const instagram = site.sns.find((s) => s.label === "Instagram");
 
   return (
@@ -28,7 +27,7 @@ export default function SiteHeader({ showPhoto = true, shareTitle, shareText }) 
             </a>
           )}
         </nav>
-        <ShareButton className="header__share" title={shareTitle} text={shareText} />
+        <ShareButton className="header__share" />
         <Link href="/#apps" className="header__cta">
           <span className="header__cta-long">{site.hero.cta}</span>
           <span className="header__cta-short" aria-hidden="true">

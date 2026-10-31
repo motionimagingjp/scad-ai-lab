@@ -8,7 +8,7 @@ const UTM = "utm_source=scad_apps_lab&utm_medium=referral&utm_campaign=top";
 
 export const site = {
   name: "Motion Imaging Lab",
-  url: "https://scad-apps-lab.vercel.app",
+  url: "https://motion-imaging-lab.vercel.app",
   description:
     "写真を撮ってきた人間が、AIと一緒に、Webアプリ・動画・音楽をつくっています。企画から公開、改善までひとりで手がけるMOTION IMAGINGの実験場です。",
   // シェアするときの文面（サイト全体向け。ページごとに変えたいときは ShareButton に text を渡す）
