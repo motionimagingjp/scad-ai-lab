@@ -153,11 +153,11 @@ export const site = {
       {
         id: "suminarina",
         name: "澄名凛奈",
-        reading: "すみな りんな",
+        reading: "すみな りな",
         kind: "AIアーティスト",
         summary: "YouTubeとInstagramで活動する、AIアーティスト",
         // 活動の内容・設定（段落ごと）。ジャンルなどが決まったらここに足す
-        story: ["澄名凛奈（すみな りんな）は、AIで制作したアーティストです。"],
+        story: ["澄名凛奈（すみな りな）は、AIで制作したアーティストです。"],
         // AI表記
         note: "AIで制作したアーティスト（AIペルソナ）",
         theme: "suminarina",
