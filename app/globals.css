@@ -916,46 +916,40 @@ ol {
   font-size: 20px;
   color: var(--m-accent);
 }
-.platforms {
-  display: grid;
+/* 配信・SNSは、ロゴだけを横に並べる（押すとそのサービスが開く） */
+.plogos {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 24px;
 }
-/* 配信先のカード。3つとも同じ形・同じ高さ（上から 媒体名／内容／アカウント） */
-.platform {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  height: 100%;
-  padding: 18px 20px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.plogo {
+  --plogo: var(--m-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--white);
   text-decoration: none;
-  transition: border-color 0.2s, background-color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s, transform 0.2s;
 }
-.platform:hover {
-  border-color: var(--m-accent);
-  background: rgba(255, 255, 255, 0.05);
+.plogo:hover,
+.plogo:focus-visible {
+  border-color: var(--plogo);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--plogo);
+  transform: translateY(-2px);
 }
-.platform__label {
+.plogo__text {
   font-family: var(--font-en-stack);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--m-accent);
-}
-.platform__use {
-  font-weight: 700;
-  line-height: 1.5;
-}
-.platform__handle {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 13px;
-  opacity: 0.7;
 }
 .mfoot {
   padding-block: 48px;
@@ -976,9 +970,6 @@ ol {
   }
   .mband__intro--solo {
     grid-template-columns: 1fr;
-  }
-  .platforms {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 

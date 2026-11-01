@@ -5,6 +5,7 @@ import Link from "next/link";
 import { site } from "../site.config";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PlatformLinks from "../PlatformLinks";
 import { youtubeUploadsUrl } from "../youtube";
 
 const { music } = site;
@@ -158,22 +159,7 @@ export default function MusicPage() {
 
                 {/* 配信・SNS */}
                 <h3 className="mband__sub">配信・SNS</h3>
-                <ul className="platforms">
-                  {a.platforms.map((p) => (
-                    <li key={p.url}>
-                      <a
-                        className="platform"
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="platform__label">{p.label}</span>
-                        <span className="platform__use">{p.use}</span>
-                        <span className="platform__handle">{p.handle}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <PlatformLinks platforms={a.platforms} />
               </div>
             </section>
           );
