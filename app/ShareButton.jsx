@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { site } from "./site.config";
 
+// ヘッダーのシェアボタン。どのページで押しても、このサイト（Motion Imaging Lab）そのものをシェアする
 export default function ShareButton({ className = "" }) {
   const [copied, setCopied] = useState(false);
 
   async function handleShare() {
-    const shareData = { title: site.name, text: site.description, url: site.url };
+    const shareData = { title: site.name, text: site.shareText, url: site.url };
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {

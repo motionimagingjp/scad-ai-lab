@@ -67,7 +67,7 @@ export default function MusicPage() {
             >
               <div className="wrap">
                 {/* 紹介 */}
-                <div className="mband__intro">
+                <div className={`mband__intro ${a.image ? "" : "mband__intro--solo"}`}>
                   <div className="mband__text">
                     <p className="mband__kind">{a.kind}</p>
                     <h2 id={`${a.id}-name`} className="mband__name">
@@ -82,17 +82,19 @@ export default function MusicPage() {
                         {p}
                       </p>
                     ))}
-                    <p className="mband__note">{a.note}</p>
+                    {a.note && <p className="mband__note">{a.note}</p>}
                   </div>
-                  <figure className="mband__photo">
-                    <Image
-                      src={a.image}
-                      alt={a.imageAlt}
-                      fill
-                      sizes="(max-width: 899px) 100vw, 480px"
-                    />
-                    <figcaption>{a.imageNote}</figcaption>
-                  </figure>
+                  {a.image && (
+                    <figure className="mband__photo">
+                      <Image
+                        src={a.image}
+                        alt={a.imageAlt}
+                        fill
+                        sizes="(max-width: 899px) 100vw, 480px"
+                      />
+                      {a.imageNote && <figcaption>{a.imageNote}</figcaption>}
+                    </figure>
+                  )}
                 </div>
 
                 {/* 動画 */}
@@ -136,21 +138,23 @@ export default function MusicPage() {
                     )}
                   </div>
                 </div>
+                {tiktok && (
                 <a
-                  className="tiktok-btn"
-                  href={tiktok.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="tiktok-btn__label">TikTok</span>
-                  <span className="tiktok-btn__text">
-                    ショート動画を見る
-                    <small>{tiktok.handle}</small>
-                  </span>
-                  <span className="tiktok-btn__arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
+                    className="tiktok-btn"
+                    href={tiktok.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="tiktok-btn__label">TikTok</span>
+                    <span className="tiktok-btn__text">
+                      ショート動画を見る
+                      <small>{tiktok.handle}</small>
+                    </span>
+                    <span className="tiktok-btn__arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                )}
 
                 {/* 配信・SNS */}
                 <h3 className="mband__sub">配信・SNS</h3>

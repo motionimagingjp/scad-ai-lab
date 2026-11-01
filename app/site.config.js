@@ -8,9 +8,12 @@ const UTM = "utm_source=scad_apps_lab&utm_medium=referral&utm_campaign=top";
 
 export const site = {
   name: "Motion Imaging Lab",
-  url: "https://scad-apps-lab.vercel.app",
+  url: "https://motion-imaging-lab.vercel.app",
   description:
-    "写真を撮ってきた個人開発者が、AIと一緒に企画から公開・改善まで手がけるWebアプリの実験場。婚活AIのスクアド、パーソナルカラー診断のイロナビ、今夜の店探しヨイナビ、街コン運営のSCADコネクト。",
+    "写真を撮ってきた人間が、AIと一緒に、Webアプリ・動画・音楽をつくっています。企画から公開、改善までひとりで手がけるMOTION IMAGINGの実験場です。",
+  // シェアするときの文面（サイト全体向け。ページごとに変えたいときは ShareButton に text を渡す）
+  shareText:
+    "写真を撮ってきた人間が、AIと一緒に、Webアプリ・動画・音楽をつくっています。",
 
   hero: {
     lines: ["AIで、", "思いついたサービスを", "形にする。"],
@@ -101,10 +104,10 @@ export const site = {
   // トップには短い紹介だけを出し、詳しくは /music のページで見せる
   music: {
     title: "音楽もつくっています",
-    lead: "アプリとは別に、2つの音楽活動をしています。",
-    pageTitle: "2つの音楽活動",
+    lead: "アプリとは別に、3つの音楽活動があります。",
+    pageTitle: "3つの音楽活動",
     pageLead:
-      "MOTION IMAGINGがプロデュースする、JAKE SOLANOとVERT5X。動画はYouTubeとTikTokで公開しています。",
+      "MOTION IMAGINGの音楽活動。JAKE SOLANO、澄名凛奈、VERT5Xの3つを紹介します。動画はYouTubeなどで公開しています。",
     label: "MOTION IMAGING",
     artists: [
       {
@@ -144,6 +147,51 @@ export const site = {
             handle: "プレイリスト",
             use: "楽曲を聴く",
             url: "https://open.spotify.com/playlist/3JmskRtzTFZOV6SE9gYTMI",
+          },
+        ],
+      },
+      {
+        id: "suminarina",
+        name: "澄名凛奈",
+        reading: "すみな りな",
+        kind: "AIアーティスト",
+        summary: "YouTubeとInstagramで活動する、AIアーティスト",
+        // 活動の内容・設定（段落ごと）。ジャンルなどが決まったらここに足す
+        story: ["澄名凛奈（すみな りな）は、AIで制作したアーティストです。"],
+        // AI表記
+        note: "AIで制作したアーティスト（AIペルソナ）",
+        theme: "suminarina",
+        // 画像（/images/music/ に置いて、ここにパスを書く）。無ければ文字のカードになる
+        image: "/images/music/suminarina.webp",
+        imageAlt: "澄名凛奈のイメージ写真（AI生成）",
+        imageNote: "AI生成イメージ",
+        // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
+        // 空のままなら、チャンネルへのリンクだけを出す
+        youtubeChannelId: "",
+        platforms: [
+          {
+            label: "YouTube",
+            handle: "@sumina_rina_official",
+            use: "動画を見る",
+            url: "https://www.youtube.com/@sumina_rina_official",
+          },
+          {
+            label: "Instagram",
+            handle: "@sumina_rina_official",
+            use: "投稿を見る",
+            url: "https://www.instagram.com/sumina_rina_official/",
+          },
+          {
+            label: "Spotify",
+            handle: "アーティスト",
+            use: "楽曲を聴く",
+            url: "https://open.spotify.com/artist/5sRxBIsSelg4RWFy83hsMW",
+          },
+          {
+            label: "Apple Music",
+            handle: "アーティスト",
+            use: "楽曲を聴く",
+            url: "https://music.apple.com/jp/artist/%E6%BE%84%E5%90%8D-%E5%87%9C%E5%A5%88/6828043271",
           },
         ],
       },
