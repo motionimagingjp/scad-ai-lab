@@ -107,7 +107,7 @@ export const site = {
     lead: "アプリとは別に、3つの音楽活動があります。",
     pageTitle: "3つの音楽活動",
     pageLead:
-      "MOTION IMAGINGの音楽活動。JAKE SOLANO、澄名凛奈、VERT5Xの3つを紹介します。動画はYouTubeなどで公開しています。",
+      "MOTION IMAGINGの音楽活動。JAKE SOLANO、澄名凜奈、VERT5Xの3つを紹介します。動画はYouTubeなどで公開しています。",
     label: "MOTION IMAGING",
     artists: [
       {
@@ -152,18 +152,18 @@ export const site = {
       },
       {
         id: "suminarina",
-        name: "澄名凛奈",
+        name: "澄名凜奈",
         reading: "すみな りな",
         kind: "AIアーティスト",
         summary: "YouTubeとInstagramで活動する、AIアーティスト",
         // 活動の内容・設定（段落ごと）。ジャンルなどが決まったらここに足す
-        story: ["澄名凛奈（すみな りな）は、AIで制作したアーティストです。"],
+        story: ["澄名凜奈（すみな りな）は、AIで制作したアーティストです。"],
         // AI表記
         note: "AIで制作したアーティスト（AIペルソナ）",
         theme: "suminarina",
         // 画像（/images/music/ に置いて、ここにパスを書く）。無ければ文字のカードになる
         image: "/images/music/suminarina.webp",
-        imageAlt: "澄名凛奈のイメージ写真（AI生成）",
+        imageAlt: "澄名凜奈のイメージ写真（AI生成）",
         imageNote: "AI生成イメージ",
         // YouTubeのチャンネルID（UCで始まる24文字）を入れると、最新の動画が自動で並ぶ。
         // 空のままなら、チャンネルへのリンクだけを出す
