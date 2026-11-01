@@ -346,6 +346,88 @@ ol {
   }
 }
 
+/* ───────── 活動の全体像（ヒーロー直下の3つ） ───────── */
+.pillars {
+  padding-block: clamp(40px, 6vw, 72px);
+  background: var(--white);
+}
+.pillars__list {
+  display: grid;
+  gap: 14px;
+}
+.pillar {
+  display: grid;
+  gap: 6px;
+  padding: 22px 24px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.pillar:hover,
+.pillar:focus-visible {
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -20px rgba(19, 41, 75, 0.5);
+}
+.pillar__no {
+  font-family: var(--font-en-stack);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+}
+.pillar__title {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--navy);
+}
+.pillar__text {
+  color: var(--sub);
+  font-size: 15px;
+}
+.pillar__cta {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+}
+/* 一番大事な01だけ、濃い色で目立たせる */
+.pillars__list li:first-child .pillar {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.pillars__list li:first-child .pillar__no,
+.pillars__list li:first-child .pillar__cta {
+  color: #e8b86a;
+}
+.pillars__list li:first-child .pillar__title {
+  color: var(--white);
+}
+.pillars__list li:first-child .pillar__text {
+  color: rgba(255, 255, 255, 0.8);
+}
+@media (min-width: 900px) {
+  .pillars__list {
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 18px;
+  }
+  .pillar {
+    padding: 28px 28px 26px;
+  }
+}
+.block__no {
+  font-family: var(--font-en-stack);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
 /* ───────── セクション共通 ───────── */
 .block {
   padding-block: clamp(72px, 10vw, 120px);
@@ -502,7 +584,7 @@ ol {
 
 /* ───────── AI動画 ───────── */
 .aivideo {
-  background: var(--mist);
+  background: var(--white);
 }
 .aivideo__frame {
   position: relative;
@@ -531,7 +613,7 @@ ol {
 
 /* ───────── 音楽（トップの短い紹介） ───────── */
 .music-teaser {
-  background: var(--white);
+  background: var(--mist);
 }
 .teaser__list {
   display: grid;
@@ -1134,6 +1216,9 @@ ol {
 }
 
 /* ───────── 写真 ───────── */
+.photo {
+  background: var(--mist);
+}
 .photo__strip {
   display: flex;
   gap: 12px;

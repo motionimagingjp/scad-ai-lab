@@ -16,11 +16,11 @@ export default function SiteHeader({ showPhoto = true }) {
           <span className="logo__text">{site.name}</span>
         </Link>
         <nav className="nav" aria-label="メインメニュー">
-          <Link href="/#apps">アプリ</Link>
-          <Link href="/#video">AI動画</Link>
-          <Link href="/music">音楽</Link>
-          <Link href="/#about">About</Link>
+          <Link href="/music">音楽・MV</Link>
           {showPhoto && <Link href="/#photo">写真</Link>}
+          <Link href="/#video">AI動画</Link>
+          <Link href="/#apps">アプリ</Link>
+          <Link href="/#about">About</Link>
           {instagram && (
             <a href={instagram.url} target="_blank" rel="noopener noreferrer">
               Instagram
@@ -28,10 +28,10 @@ export default function SiteHeader({ showPhoto = true }) {
           )}
         </nav>
         <ShareButton className="header__share" />
-        <Link href="/#apps" className="header__cta">
-          <span className="header__cta-long">{site.hero.cta}</span>
+        <Link href={site.headerCta.href} className="header__cta">
+          <span className="header__cta-long">{site.headerCta.long}</span>
           <span className="header__cta-short" aria-hidden="true">
-            アプリ
+            {site.headerCta.short}
           </span>
         </Link>
       </div>

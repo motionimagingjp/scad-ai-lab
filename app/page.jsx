@@ -41,14 +41,14 @@ function findAppScreenshot(id) {
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
-  const { hero, apps, aiVideo, music, about, sns } = site;
+  const { hero, pillars, apps, aiVideo, music, about, sns } = site;
   const aiVideoUrl = youtubeUploadsUrl(aiVideo.channelId);
   const instagram = sns.find((s) => s.label === "Instagram");
 
   return (
     <>
-      <a className="skip" href="#apps">
-        アプリ一覧へ移動
+      <a className="skip" href="#activities">
+        活動の紹介へ移動
       </a>
 
       <SiteHeader showPhoto={gallery.length > 0} />
@@ -75,7 +75,7 @@ export default function Home() {
             </h1>
             <div className="hero__foot">
               <p className="hero__lead">{hero.lead}</p>
-              <a href="#apps" className="btn btn--light">
+              <a href={hero.ctaHref} className="btn btn--light">
                 {hero.cta}
               </a>
             </div>
@@ -85,13 +85,145 @@ export default function Home() {
           )}
         </section>
 
-        {/* ───────── アプリ ───────── */}
+        {/* ───────── 活動の全体像（上から重要な順） ───────── */}
+        <section id="activities" className="block pillars">
+          <div className="wrap">
+            <ol className="pillars__list">
+              {pillars.map((p) => (
+                <li key={p.no}>
+                  <a className="pillar" href={p.href}>
+                    <span className="pillar__no">{p.no}</span>
+                    <span className="pillar__title">{p.title}</span>
+                    <span className="pillar__text">{p.text}</span>
+                    <span className="pillar__cta">
+                      {p.cta}
+                      <span aria-hidden="true"> ↓</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ───────── 01 音楽（トップは短い紹介だけ。詳しくは /music） ───────── */}
+        <section id="music" className="block music-teaser">
+          <div className="wrap">
+            <div className="block__head">
+              <p className="block__no">01</p>
+              <h2 className="block__title">{music.title}</h2>
+              <p className="block__lead">{music.lead}</p>
+            </div>
+            <ul className="teaser__list">
+              {music.artists.map((a) => (
+                <li key={a.id}>
+                  <Link
+                    href={`/music#${a.id}`}
+                    className={`teaser teaser--${a.theme}`}
+                  >
+                    <span className="teaser__photo">
+                      {a.image ? (
+                        <Image src={a.image} alt="" fill sizes="96px" />
+                      ) : (
+                        <span className="teaser__initial" aria-hidden="true">
+                          {a.name.slice(0, 1)}
+                        </span>
+                      )}
+                    </span>
+                    <span className="teaser__body">
+                      <span className="teaser__name">{a.name}</span>
+                      <span className="teaser__kind">{a.kind}</span>
+                    </span>
+                    <span className="teaser__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="teaser__more">
+              <Link className="btn" href="/music">
+                音楽・MVを見る
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        {/* ───────── 01 AI動画（最新の動画が自動で並ぶ） ───────── */}
+        <section id="video" className="block aivideo">
+          <div className="wrap">
+            <div className="block__head">
+              <h2 className="block__title">{aiVideo.title}</h2>
+              <p className="block__lead">{aiVideo.lead}</p>
+            </div>
+            {aiVideoUrl && (
+              <div className="aivideo__frame">
+                <iframe
+                  src={aiVideoUrl}
+                  title="AIでつくった動画（最新順）"
+                  loading="lazy"
+                  allow="encrypted-media; picture-in-picture; fullscreen"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            )}
+            <p className="aivideo__note">{aiVideo.note}</p>
+            <p className="aivideo__more">
+              <a
+                className="link"
+                href={aiVideo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTubeでほかの動画を見る
+              </a>
+            </p>
+          </div>
+        </section>
+
+        {/* ───────── 02 写真 × AI（写真があるときだけ表示） ───────── */}
+        {gallery.length > 0 && (
+          <section id="photo" className="block photo">
+            <div className="wrap block__head">
+              <p className="block__no">02</p>
+              <h2 className="block__title">{site.gallery.title}</h2>
+              <p className="block__lead">{site.gallery.lead}</p>
+            </div>
+            <div className="photo__strip" tabIndex={0} aria-label="写真ギャラリー（横にスクロールできます）">
+              {gallery.map((src, i) => (
+                <figure key={src} className="photo__item">
+                  <Image
+                    src={src}
+                    alt={`作品写真 ${i + 1}`}
+                    fill
+                    sizes="(max-width: 700px) 80vw, 480px"
+                  />
+                </figure>
+              ))}
+            </div>
+            {instagram && (
+              <div className="wrap photo__more">
+                <a
+                  className="link"
+                  href={instagram.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagramでほかの写真を見る
+                </a>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* ───────── 03 アプリ開発 ───────── */}
         <section id="apps" className="block apps">
           <div className="wrap">
             <div className="block__head">
-              <h2 className="block__title">いま公開しているアプリ</h2>
+              <p className="block__no">03</p>
+              <h2 className="block__title">アプリ開発</h2>
               <p className="block__lead">
-                どれも無料で、登録なしですぐに試せます。
+                AIと一緒に作ったWebアプリです。どれも無料で、登録なしですぐに試せます。
               </p>
             </div>
 
@@ -142,80 +274,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── AI動画（最新の動画が自動で並ぶ） ───────── */}
-        <section id="video" className="block aivideo">
-          <div className="wrap">
-            <div className="block__head">
-              <h2 className="block__title">{aiVideo.title}</h2>
-              <p className="block__lead">{aiVideo.lead}</p>
-            </div>
-            {aiVideoUrl && (
-              <div className="aivideo__frame">
-                <iframe
-                  src={aiVideoUrl}
-                  title="AIでつくった動画（最新順）"
-                  loading="lazy"
-                  allow="encrypted-media; picture-in-picture; fullscreen"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-              </div>
-            )}
-            <p className="aivideo__note">{aiVideo.note}</p>
-            <p className="aivideo__more">
-              <a
-                className="link"
-                href={aiVideo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                YouTubeでほかの動画を見る
-              </a>
-            </p>
-          </div>
-        </section>
-
-        {/* ───────── 音楽（トップは短い紹介だけ。詳しくは /music） ───────── */}
-        <section id="music" className="block music-teaser">
-          <div className="wrap">
-            <div className="block__head">
-              <h2 className="block__title">{music.title}</h2>
-              <p className="block__lead">{music.lead}</p>
-            </div>
-            <ul className="teaser__list">
-              {music.artists.map((a) => (
-                <li key={a.id}>
-                  <Link
-                    href={`/music#${a.id}`}
-                    className={`teaser teaser--${a.theme}`}
-                  >
-                    <span className="teaser__photo">
-                      {a.image ? (
-                        <Image src={a.image} alt="" fill sizes="96px" />
-                      ) : (
-                        <span className="teaser__initial" aria-hidden="true">
-                          {a.name.slice(0, 1)}
-                        </span>
-                      )}
-                    </span>
-                    <span className="teaser__body">
-                      <span className="teaser__name">{a.name}</span>
-                      <span className="teaser__kind">{a.kind}</span>
-                    </span>
-                    <span className="teaser__arrow" aria-hidden="true">
-                      →
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="teaser__more">
-              <Link className="link" href="/music">
-                音楽のページで、動画と活動を見る
-              </Link>
-            </p>
-          </div>
-        </section>
-
         {/* ───────── About ───────── */}
         <section id="about" className="block about">
           <div className="wrap about__grid">
@@ -232,7 +290,7 @@ export default function Home() {
               ))}
             </div>
             <div className="flow">
-              <p className="flow__label">アプリができるまで</p>
+              <p className="flow__label">{about.flowLabel}</p>
               <ol className="flow__list">
                 {about.flow.map((step, i) => (
                   <li key={step} className="flow__step">
@@ -241,46 +299,10 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <p className="flow__note">
-                公開したら終わりではなく、使われ方を見て「改善」から「アイデア」へ戻ります。
-              </p>
+              <p className="flow__note">{about.flowNote}</p>
             </div>
           </div>
         </section>
-
-        {/* ───────── 写真（写真があるときだけ表示） ───────── */}
-        {gallery.length > 0 && (
-          <section id="photo" className="block photo">
-            <div className="wrap block__head">
-              <h2 className="block__title">{site.gallery.title}</h2>
-              <p className="block__lead">{site.gallery.lead}</p>
-            </div>
-            <div className="photo__strip" tabIndex={0} aria-label="写真ギャラリー（横にスクロールできます）">
-              {gallery.map((src, i) => (
-                <figure key={src} className="photo__item">
-                  <Image
-                    src={src}
-                    alt={`作品写真 ${i + 1}`}
-                    fill
-                    sizes="(max-width: 700px) 80vw, 480px"
-                  />
-                </figure>
-              ))}
-            </div>
-            {instagram && (
-              <div className="wrap photo__more">
-                <a
-                  className="link"
-                  href={instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagramでほかの写真を見る
-                </a>
-              </div>
-            )}
-          </section>
-        )}
       </main>
 
       <SiteFooter />
