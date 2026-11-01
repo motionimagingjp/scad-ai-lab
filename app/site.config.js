@@ -109,10 +109,18 @@ export const site = {
     pageLead:
       "MOTION IMAGINGの音楽活動。JAKE SOLANO、澄名凜奈、VERT5Xの3つを紹介します。動画はYouTubeなどで公開しています。",
     label: "MOTION IMAGING",
+    // 音源の販売（BOOTH）。ショップのトップと、アーティストごとの商品
+    booth: {
+      shopUrl: "https://motion-imaging.booth.pm",
+    },
     artists: [
       {
         id: "jakesolano",
         name: "JAKE SOLANO",
+        // 音源の販売ページ（BOOTH）。価格を変えたら、ここも合わせて直す
+        booth: [
+          { title: "Blue Time", price: "¥2,000", url: "https://motion-imaging.booth.pm/items/9080039" },
+        ],
         kind: "シティポップ / R&B / バラード",
         summary: "島と夜景の景色を歌う、日本語のシティポップ",
         note: "歌は本人。制作にAIツールも活用",
@@ -153,6 +161,12 @@ export const site = {
       {
         id: "suminarina",
         name: "澄名凜奈",
+        // 音源の販売ページ（BOOTH）。価格を変えたら、ここも合わせて直す
+        booth: [
+          { title: "歌入り10曲【WAV＋歌詞ブック＋壁紙】", price: "¥1,800", url: "https://motion-imaging.booth.pm/items/9081904" },
+          { title: "インスト10曲【WAV＋壁紙】", price: "¥1,800", url: "https://motion-imaging.booth.pm/items/9081909" },
+          { title: "歌入り＋インスト 20曲セット", price: "¥3,000", url: "https://motion-imaging.booth.pm/items/9081910" },
+        ],
         reading: "すみな りな",
         kind: "AIアーティスト",
         summary: "YouTubeとInstagramで活動する、AIアーティスト",
@@ -198,6 +212,10 @@ export const site = {
       {
         id: "vert5x",
         name: "VERT5X",
+        // 音源の販売ページ（BOOTH）。価格を変えたら、ここも合わせて直す
+        booth: [
+          { title: "1ST", price: "¥1,800", url: "https://motion-imaging.booth.pm/items/9080235" },
+        ],
         reading: "バーテックス",
         kind: "K-POP男性グループ（架空）",
         summary: "AIから生まれた、赤と黒のK-POP男性グループ（架空）",

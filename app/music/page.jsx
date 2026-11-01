@@ -157,6 +157,31 @@ export default function MusicPage() {
                   </a>
                 )}
 
+                {/* 音源の購入（BOOTH） */}
+                {a.booth && a.booth.length > 0 && (
+                  <>
+                    <h3 className="mband__sub">音源を購入（BOOTH）</h3>
+                    <ul className="booth">
+                      {a.booth.map((item) => (
+                        <li key={item.url}>
+                          <a
+                            className="booth__item"
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className="booth__title">{item.title}</span>
+                            <span className="booth__price">{item.price}</span>
+                            <span className="booth__go" aria-hidden="true">
+                              BOOTHで見る ↗
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
                 {/* 配信・SNS */}
                 <h3 className="mband__sub">配信・SNS</h3>
                 <PlatformLinks platforms={a.platforms} />
@@ -168,6 +193,16 @@ export default function MusicPage() {
         <section className="mfoot">
           <div className="wrap">
             <p className="mfoot__label">Label: {music.label}</p>
+            <p className="mfoot__shop">
+              <a
+                className="link"
+                href={music.booth.shopUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                音源の販売：BOOTHショップ（MOTION IMAGING）
+              </a>
+            </p>
             <Link href="/#apps" className="link">
               アプリの紹介に戻る
             </Link>

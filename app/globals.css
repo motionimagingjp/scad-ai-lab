@@ -916,6 +916,58 @@ ol {
   font-size: 20px;
   color: var(--m-accent);
 }
+/* 音源の購入（BOOTH）：商品名・価格・リンクを1行に */
+.booth {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+  max-width: 880px;
+}
+.booth__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.booth__item:hover,
+.booth__item:focus-visible {
+  border-color: var(--m-accent);
+  background: rgba(255, 255, 255, 0.1);
+}
+.booth__title {
+  font-weight: 700;
+  line-height: 1.5;
+}
+.booth__price {
+  font-family: var(--font-en-stack);
+  font-weight: 600;
+  color: var(--m-accent);
+  text-align: right;
+}
+.booth__go {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  opacity: 0.7;
+}
+@media (min-width: 760px) {
+  .booth__item {
+    grid-template-columns: 1fr auto auto;
+  }
+  .booth__go {
+    grid-column: auto;
+  }
+}
+.mfoot__shop {
+  margin-bottom: 12px;
+}
+
 /* 配信・SNSは、ロゴだけを横に並べる（押すとそのサービスが開く） */
 .plogos {
   display: flex;
