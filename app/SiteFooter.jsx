@@ -7,7 +7,7 @@ export default function SiteFooter() {
       <div className="wrap footer__inner">
         <div>
           <p className="footer__logo">{site.name}</p>
-          <p className="footer__tag">歌と、写真と、AIでつくる。</p>
+          <p className="footer__tag">旅の写真から、歌とMVへ。</p>
           <p className="footer__nav">
             <Link href="/music">音楽・MV</Link>
             <Link href="/#photo">写真</Link>

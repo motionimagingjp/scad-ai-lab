@@ -346,6 +346,98 @@ ol {
   }
 }
 
+
+/* ───────── ストーリー（旅の写真 → 歌 → MV） ───────── */
+.story {
+  margin-bottom: clamp(28px, 5vw, 48px);
+}
+.story__label {
+  font-family: var(--font-en-stack);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+}
+.story__title {
+  margin-top: 6px;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.4;
+  color: var(--navy);
+}
+.story__lead {
+  margin-top: 10px;
+  color: var(--sub);
+}
+.story__steps {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+.story__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.story__num {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--blue);
+  color: var(--blue);
+  font-family: var(--font-en-stack);
+  font-weight: 600;
+}
+.story__step:last-child .story__num {
+  background: var(--blue);
+  color: var(--white);
+}
+.story__name {
+  font-weight: 700;
+  color: var(--navy);
+}
+.story__text {
+  font-size: 14px;
+  color: var(--sub);
+}
+.story__note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--sub);
+}
+@media (min-width: 900px) {
+  .story__steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .story__step {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    justify-items: start;
+    padding: 20px;
+  }
+  .story__num {
+    grid-row: auto;
+  }
+  .story__step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blue);
+    font-size: 14px;
+    background: var(--white);
+  }
+}
+
 /* ───────── 活動の全体像（ヒーロー直下の3つ） ───────── */
 .pillars {
   padding-block: clamp(40px, 6vw, 72px);

@@ -19,7 +19,7 @@ const en = Outfit({
 
 export const metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name} | 歌と、写真と、AIでつくる`,
+  title: `${site.name} | 旅の写真から、歌とMVへ`,
   description: site.description,
   openGraph: {
     title: site.name,

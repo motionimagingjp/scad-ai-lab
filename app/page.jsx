@@ -41,7 +41,7 @@ function findAppScreenshot(id) {
 export default function Home() {
   const heroImage = listImages("hero")[0] || null;
   const gallery = listImages("gallery");
-  const { hero, pillars, apps, aiVideo, music, about, sns } = site;
+  const { hero, story, pillars, apps, aiVideo, music, about, sns } = site;
   const aiVideoUrl = youtubeUploadsUrl(aiVideo.channelId);
   const instagram = sns.find((s) => s.label === "Instagram");
 
@@ -88,6 +88,21 @@ export default function Home() {
         {/* ───────── 活動の全体像（上から重要な順） ───────── */}
         <section id="activities" className="block pillars">
           <div className="wrap">
+            <div className="story">
+              <p className="story__label">{story.label}</p>
+              <h2 className="story__title">{story.title}</h2>
+              <p className="story__lead">{story.lead}</p>
+              <ol className="story__steps">
+                {story.steps.map((st, i) => (
+                  <li key={st.title} className="story__step">
+                    <span className="story__num">{i + 1}</span>
+                    <span className="story__name">{st.title}</span>
+                    <span className="story__text">{st.text}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="story__note">{story.note}</p>
+            </div>
             <ol className="pillars__list">
               {pillars.map((p) => (
                 <li key={p.no}>
